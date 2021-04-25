@@ -19,6 +19,19 @@ type DataServer struct {
 	data ds.Datastore   // datastore for Accounts
 }
 
+// structure for POST data expected from client for transfer request
+type TranferDetail struct {
+	FromId string  `json:"from_id"`
+	ToId   string  `json:"to_id"`
+	Amount float64 `json:"amount"`
+}
+
+// response data sent to the client on successful transfer
+type TranferResponse struct {
+	TransactionId uint64  `json:"transaction_id"`
+	Balance       float64 `json:"balance"`
+}
+
 // GET /list/ Handler
 //
 func (s *DataServer) listHandler(w http.ResponseWriter, req *http.Request) {
@@ -102,13 +115,6 @@ func (s *DataServer) transferHandler(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	// structure for POST data expected from client
-	type TranferDetail struct {
-		FromId string  `json:"from_id"`
-		ToId   string  `json:"to_id"`
-		Amount float64 `json:"amount"`
-	}
-
 	// extract the fund transfer details from the POST request
 	contentType := req.Header.Get("Content-Type")
 	mediatype, _, err := mime.ParseMediaType(contentType)
@@ -150,11 +156,6 @@ func (s *DataServer) transferHandler(w http.ResponseWriter, req *http.Request) {
 	}
 	log.Printf("[%v][%v][%v]fund transfer completed in datastore with tid: %v, balance: %v\n", req.RemoteAddr, req.Method, req.URL.Path, tid, balance)
 
-	// response data sent to the client on successful transfer
-	type TranferResponse struct {
-		TransactionId uint64  `json:"transaction_id"`
-		Balance       float64 `json:"balance"`
-	}
 	tr := TranferResponse{tid, balance}
 
 	// write response to client
