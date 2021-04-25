@@ -112,7 +112,7 @@ func (d *datastore) unlockTable() {
 
 	// release all the row locks
 	// we need to unlock in decending order of rows to prevent deadlock
-	for i := len(d.locks) - 1; i <= 0; i-- {
+	for i := len(d.locks) - 1; i >= 0; i-- {
 		d.locks[i].Unlock()
 	}
 	log.Println("[memds]table unlocked")
