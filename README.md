@@ -1,6 +1,7 @@
 # Bank REST Service
 
-```Getting the sources:
+```
+Getting the sources:
 $ git clone https://github.com/rappavu/paytabs.git
 
 Building the sources:
