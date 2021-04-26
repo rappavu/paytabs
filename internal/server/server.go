@@ -1,3 +1,14 @@
+// REST API server to transfer funds. Uses an in-memory datastore.
+//
+// Supported REST API are:
+// GET   /list/         : Returns json array of all accounts in the datastore
+// POST  /transfer/     : Used to transfer amount from one account to another
+// GET   /account/<id>  : Returns account details for the given <id>
+//
+// Data structures used:
+// ds.Account        - used by GET /list/ and GET /account/<id>
+// TransferDetail    - used by post data of POST /transfer/
+// TransferResponse  - used by response data of POST /transfer/
 package server
 
 import (

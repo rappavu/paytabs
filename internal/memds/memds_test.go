@@ -148,13 +148,13 @@ func TestGetParallel(t *testing.T) {
 
 func TestValidateTransferParallel(t *testing.T) {
 	d, _ := Load(datafile)
-    t.Run("group", func(t *testing.T) {
-        t.Run("List", TestListParallel)
-        t.Run("Transfer", TestTransferParallel)
-        t.Run("Get", TestGetParallel)
-    })
+	t.Run("group", func(t *testing.T) {
+		t.Run("List", TestListParallel)
+		t.Run("Transfer", TestTransferParallel)
+		t.Run("Get", TestGetParallel)
+	})
 
-	// after all the tests are finished 
+	// after all the tests are finished
 	// as all debit and credit evens out, datastore should remain unchanged
 	accts := d.List()
 

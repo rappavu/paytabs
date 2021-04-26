@@ -1,3 +1,5 @@
+// Defines the interface to be supported by a Datastore.
+//
 package ds
 
 type Account struct {

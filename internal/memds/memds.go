@@ -1,3 +1,5 @@
+// Implements an in-memory datastore. Supports ds.Datastore interface
+//
 package memds
 
 import (
