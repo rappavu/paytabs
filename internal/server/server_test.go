@@ -10,9 +10,10 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"os"
-	"paytabs/internal/ds"
 	"reflect"
 	"testing"
+
+	"paytabs/internal/ds"
 )
 
 const datafile string = "../../data/accounts-mock.json"
