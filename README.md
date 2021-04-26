@@ -1,6 +1,6 @@
 # Bank REST Service
 
-Getting the sources:
+```Getting the sources:
 $ git clone https://github.com/rappavu/paytabs.git
 
 Building the sources:
@@ -63,5 +63,7 @@ Structure used by response data for transfer:
     "transaction_id": string
     "balance": float64
 }
+
+```
 
 // end-of-file
